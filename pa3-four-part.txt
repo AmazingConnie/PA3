@@ -1,0 +1,122 @@
+ ▐▛███▛█   Claude Code v2.1.283
+▝▜██████▀  Opus 5.5 · Claude Pro
+ ▝▝   ▝▝   ~/COMP5300/PA3
+
+  Get to finished work sooner with Opus 5.5. Switch anytime with /model.
+
+❯ /rename pa3-four-part-prompt 
+  ⎿  Session renamed to: pa3-four-part-prompt
+
+❯ Goal: I want to build a simple contact book using a Python file named         
+  contacts.py for commands and a JSON file named contact_book.json.             
+                                                                                
+  Context: Modify contacts.py to write functions for adding entries, updating   
+  entries, deleting entries and querying entries to contact_book.json. Follow   
+  the examples written in conventions.md for writing each function. Observe the 
+  rules in rules.md when writing each function.                                 
+                                                                                
+  Constraints: Only modify contacts.py unless asked. Do not delete or rename    
+  files. Do not add new packages without asking. Do not change existing tests   
+  unless necessary. Avoid large rewrites, and unrelated cleanup. Don't touch    
+  new_prompt.md.                                                                
+                                                                                
+  Verification: After running the change, add tests to pytests/test_contacts.py 
+  for each of the functions. Run pytests/test_contacts.py and summarize if the  
+  tests passed. If one or more tests failed, explain the failure before making  
+  more edits.                                                                   
+
+  Ran 2 shell commands (ctrl+o to expand)
+
+● Write(contacts.py)
+  ⎿  Wrote 262 lines to contacts.py
+      1 """A simple command-line contact book backed by contact_book.json
+        ."""
+      2 
+      3 import argparse
+      4 import json
+      5 import os
+      6 import re
+      7 import shutil
+      8 import sys
+      9 import tempfile
+     … +297 lines (ctrl+o to expand)
+
+● Now the tests (pytests/test_contacts.py doesn't exist yet, so I'm creating it;
+  they use a temp file so the real contact_book.json is never touched).
+
+● Write(pytests/test_contacts.py)
+  ⎿  Wrote 215 lines to pytests/test_contacts.py
+       1 import json
+       2 import os
+       3 import sys
+       4 
+       5 import pytest
+       7 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..")
+         )
+       8 
+       9 import contacts  # noqa: E402
+      10 from contacts import ContactError  # noqa: E402
+     … +230 lines (ctrl+o to expand)
+
+  Listed 1 directory, ran 1 shell command (ctrl+o to expand)
+
+● All 34 tests in pytests/test_contacts.py passed (34 passed in 0.39s).
+
+  What changed
+
+  contacts.py (it was empty before) now has one function for each of the four
+  operations:
+  - add_contact: the name is required and can't be blank. If you run it with no
+    arguments, it asks for the name. Phone, email and country are optional.
+  - update_contact: finds the contact by its whole name, ignoring case. It can
+    change the name, phone, email or country. A blank value like --country ""
+    removes that field.
+  - delete_contact: finds the contact by its whole name and asks for
+    confirmation unless you pass --yes.
+  - search_contacts and list_contacts: --search matches part of a field and
+    ignores case. It works with --name, --phone, --email or --country.
+
+  How the rules in rules.md are enforced:
+  - Unique names: names are compared ignoring case and surrounding spaces.
+  - Email: it must look like name@example.com.
+  - Phone: 7 to 15 digits, with an optional leading +. Extensions like x123 are
+    rejected.
+  - No combining: --list, --search, --update and --delete can't be used
+    together.
+  - Backup: each save first copies the book to contact_book.json.bak. If the
+    write fails, the backup is restored.
+  - Empty file: contact_book.json is currently empty, and that is treated as an
+    empty contact book.
+
+  Where conventions.md and rules.md disagreed
+
+  - Duplicate names: conventions.md says to ask whether to add a number to the
+    new contact's name, while rules.md says to reject it. The program asks:
+    "yes" saves it as "Jane Doe 2", and anything else rejects it.
+  - Email search example: --search --email "555-9999" has a comment about names
+    containing "978", which doesn't match. I made --search accept any of the
+    fields rather than guess which one was meant.
+
+  Files
+
+  - pytests/test_contacts.py is a new file. It didn't exist; the folder only had
+    an empty tests.py, which I left alone. The tests use a temporary contact
+    book, so the real contact_book.json is still empty.
+  - pytest created __pycache__/ and .pytest_cache/ when it ran. You can delete
+    them if you don't want them.
+  - No other files changed, no packages were added, and new_prompt.md was not
+    touched.
+
+✻ Cogitated for 1m 24s · done 10:14 PM
+
+❯ /export pa3-four-part.txt                                                     
+  ⎿  Conversation exported to: /home/rmallu/COMP5300/PA3/pa3-four-part.txt
+
+❯ run the tests                                                                 
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● I ran the tests again and all 34 in pytests/test_contacts.py passed (34 passed
+  in 0.25s). That's the same result as the last run.
+
+✻ Worked for 5s · done 10:27 PM

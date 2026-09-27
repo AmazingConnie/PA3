@@ -2,7 +2,6 @@
 ▝▜██████▀  Opus 5.5 · Claude Pro
  ▝▝   ▝▝   ~/COMP5300/PA3
 
-  Get to finished work sooner with Opus 5.5. Switch anytime with /model.
 
 ❯ /rename pa3-four-part-prompt 
   ⎿  Session renamed to: pa3-four-part-prompt
@@ -107,7 +106,7 @@
   - No other files changed, no packages were added, and new_prompt.md was not
     touched.
 
-✻ Cogitated for 1m 24s · done 10:14 PM
+✻ Cogitated for 1m 24s · done Saturday 10:14 PM
 
 ❯ /export pa3-four-part.txt                                                     
   ⎿  Conversation exported to: /home/rmallu/COMP5300/PA3/pa3-four-part.txt
@@ -119,4 +118,139 @@
 ● I ran the tests again and all 34 in pytests/test_contacts.py passed (34 passed
   in 0.25s). That's the same result as the last run.
 
-✻ Worked for 5s · done 10:27 PM
+✻ Worked for 5s · done Saturday 10:27 PM
+
+❯ /export pa3-four-part.txt                                                     
+  ⎿  Conversation exported to: /home/rmallu/COMP5300/PA3/pa3-four-part.txt
+
+❯ /export pa3-four-part.md                                                      
+  ⎿  Conversation exported to: /home/rmallu/COMP5300/PA3/pa3-four-part.md
+
+❯ add .gitignore before committing                                              
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Write(.gitignore)
+  ⎿  Wrote 10 lines to .gitignore
+       1 # Python bytecode
+       2 __pycache__/
+       3 *.py[cod]
+       4 
+       5 # pytest
+       6 .pytest_cache/
+       7 
+       8 # contacts.py backup and temp files
+       9 *.bak
+      10 *.tmp
+
+● I added .gitignore at /home/rmallu/COMP5300/PA3/.gitignore. It ignores:
+  - Python bytecode (__pycache__/, *.pyc)
+  - pytest's cache folder (.pytest_cache/)
+  - the backup and temp files that contacts.py creates when it saves (*.bak,
+    *.tmp)
+
+  A contact_book.json.bak file now exists, so the program has saved at least
+  once since the tests ran. That backup file will be ignored.
+
+  These files will still be committed: contacts.py, contact_book.json,
+  conventions.md, rules.md, new_prompt.md, pytests/, and your exports
+  pa3-four-part.txt and .md.
+
+  This folder isn't a git repository yet, so you'll need to run git init before
+  committing. I haven't committed anything. If you want me to set up the repo
+  and make the commit, tell me.
+
+✻ Baked for 10s · done 6:46 PM
+
+❯ git init and and .gitignore                                                   
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● I ran git init in /home/rmallu/COMP5300/PA3 and staged .gitignore. Nothing has
+  been committed yet.
+
+  git status shows the ignore rules working: __pycache__/, .pytest_cache/ and
+  contact_book.json.bak aren't listed. The other files are shown as untracked
+  and haven't been added. Do you want me to add them and make the first commit?
+
+✻ Sautéed for 5s · done 6:46 PM
+
+❯ add the rest and commit                                                       
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● I committed everything as 69a562f: "Add contact book CLI with add, update,
+  delete and query commands".
+
+  The commit has 10 files:
+  - .gitignore
+  - contacts.py
+  - contact_book.json
+  - conventions.md, rules.md, new_prompt.md
+  - pytests/test_contacts.py and pytests/tests.py
+  - pa3-four-part.md and pa3-four-part.txt
+
+  Cache folders and contact_book.json.bak were left out by .gitignore. No remote
+  is set up, so nothing has been pushed.
+
+✻ Cooked for 6s · done 6:47 PM
+
+❯ remove pytests/tests.py                                                       
+  Ran 1 shell command (ctrl+o to expand)
+
+● I removed pytests/tests.py with git rm. It was an empty file. The deletion is
+  staged but not committed yet. Do you want me to commit it?
+
+✻ Cooked for 5s · done 6:48 PM
+
+❯ commit it                                                                     
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● I committed the removal as 284098b: "Remove empty pytests/tests.py". There are
+  no other uncommitted changes.
+
+✻ Crunched for 4s · done 6:48 PM
+
+❯ can you add a README for this project?                                        
+
+● Write(README.md)
+  ⎿  Wrote 78 lines to README.md
+       1 # Contact Book
+       2 
+       3 A simple command-line contact book. `contacts.py` runs the comma
+       4 `contact_book.json`.
+       5 
+       6 Requires Python 3. No extra packages are needed to run it; the t
+         ests need `pytest`.
+       8 ## Usage
+       9 
+      10 ### Add a contact
+     … +83 lines (ctrl+o to expand)
+
+● I added README.md to the project root. It covers:
+  - Usage: example commands for adding, listing and searching, updating and
+    deleting contacts.
+  - Rules: the rules from rules.md in short form, including the duplicate-name
+    prompt and the .bak backup.
+  - Tests: how to run them, and a note that they don't touch the real
+    contact_book.json.
+  - Files: a table of the project files.
+
+  I left new_prompt.md and the pa3-four-part exports out of the file table
+  because they're your assignment notes rather than part of the program. It
+  isn't committed yet. Do you want me to commit it?
+
+✻ Crunched for 12s · done 6:50 PM
+
+❯ commit it                                                                     
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● I committed the README as a148d77: "Add README". There are no other
+  uncommitted changes.
+
+✻ Worked for 4s · done 6:50 PM
+
+❯ /export pa3-four-part.md                                                      
+  ⎿  Conversation exported to: /home/rmallu/COMP5300/PA3/pa3-four-part.md
